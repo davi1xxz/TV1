@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, Clock, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -58,20 +58,20 @@ const NewsSlider = () => {
     }
   ];
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % newsItems.length);
-  };
+  }, [newsItems.length]);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev - 1 + newsItems.length) % newsItems.length);
-  };
+  }, [newsItems.length]);
 
   useEffect(() => {
     if (isAutoPlay) {
       const interval = setInterval(nextSlide, 5000);
       return () => clearInterval(interval);
     }
-  }, [isAutoPlay]);
+  }, [isAutoPlay, nextSlide]);
 
   return (
     <div className="w-full max-w-6xl mx-auto">
