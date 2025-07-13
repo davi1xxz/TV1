@@ -8,7 +8,6 @@ import Noticias from "./pages/Noticias";
 import Programacao from "./pages/Programacao";
 import Sobre from "./pages/Sobre";
 import NotFound from "./pages/NotFound";
-import Footer from "./components/Footer";
 
 const queryClient = new QueryClient();
 
@@ -25,7 +24,6 @@ const App = () => (
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer />
     </BrowserRouter>
   </QueryClientProvider>
 );

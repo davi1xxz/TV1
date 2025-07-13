@@ -3,12 +3,13 @@ import React from 'react';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import Navbar from '../components/Navbar';
 import VideoPlayer from '../components/VideoPlayer';
+import Footer from '../components/Footer';
 import { Waves, Users, Radio, Headphones } from 'lucide-react';
 
 const Index = () => {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-black transition-colors duration-300">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-black transition-colors duration-300 relative">
         <Navbar />
         
         {/* Hero Section */}
@@ -35,6 +36,8 @@ const Index = () => {
             </div>
           </div>
         </section>
+        
+        <Footer />
       </div>
     </ThemeProvider>
   );
