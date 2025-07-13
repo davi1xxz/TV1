@@ -3,7 +3,6 @@ import React from 'react';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import Navbar from '../components/Navbar';
 import VideoPlayer from '../components/VideoPlayer';
-import NewsSlider from '../components/NewsSlider';
 import { Waves, Users, Radio, Headphones } from 'lucide-react';
 
 const Index = () => {
@@ -33,11 +32,6 @@ const Index = () => {
                 <source src="/sample.mp4" type="video/mp4" />
                 Seu navegador não suporta o elemento de vídeo.
               </video>
-            </div>
-
-            {/* News Section */}
-            <div className="mb-20">
-              <NewsSlider />
             </div>
           </div>
         </section>
