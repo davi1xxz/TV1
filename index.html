@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" style="min-height:0;padding:0;margin:0;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +10,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      html, body {
+        min-height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .container {
+        min-height: 0 !important;
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+      }
+    </style>
 </head>
-<body>
+<body style="min-height:0;padding:0;margin:0;">
     <!-- Navigation -->
     <nav id="navbar" class="navbar">
         <div class="nav-container">
@@ -94,13 +106,14 @@
             </div>
         </div>
     </nav>
+    <!-- Remover o <div id="root"></div> do body -->
 
     <!-- Main Content -->
     <main id="main-content">
         <!-- Início Page -->
         <div id="inicio-page" class="page active">
             <section class="hero-section">
-                <div class="container">
+                <div class="container" style="padding-bottom:0; margin-bottom:0; min-height:0;">
                     <div class="hero-content">
                         <h1 class="hero-title">
                             <span class="gradient-text">Sua Rádio Online</span>
@@ -117,31 +130,7 @@
                     <!-- News Slider -->
                     <!-- REMOVIDO: Seção Últimas Notícias e controles relacionados -->
 
-                    <!-- Barra de Patrocinadores -->
-                    <section style="padding: 24px 0; background: linear-gradient(to right, #ef4444, #ec4899);">
-                        <div style="max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 48px;">
-                            <!-- Google (logo G oficial) -->
-                            <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20.64 25.44V28.8h8.16c-.33 2.16-2.6 6.24-8.16 6.24-4.92 0-8.88-4.08-8.88-9.04s3.96-9.04 8.88-9.04c2.8 0 4.67 1.12 5.74 2.08l4.18-4.08C28.2 12.6 24.96 11 21.12 11 13.44 11 7 17.44 7 25.04s6.44 14.04 14.12 14.04c8.12 0 13.44-5.68 13.44-13.68 0-.92-.1-1.6-.22-2.32H20.64z" fill="white"/>
-                            </svg>
-                            <!-- YouTube (logo oficial) -->
-                            <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="8" y="16" width="32" height="16" rx="6" fill="white"/>
-                                <polygon points="22,20 32,24 22,28" fill="#ec4899"/>
-                            </svg>
-                            <!-- Spotify (logo oficial simplificado) -->
-                            <svg width="40" height="40" viewBox="0 0 168 168" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="84" cy="84" r="84" fill="none"/>
-                                <path d="M48 112c24-8 72-8 96 4" stroke="white" stroke-width="10" stroke-linecap="round"/>
-                                <path d="M56 92c20-6 60-6 80 3" stroke="white" stroke-width="8" stroke-linecap="round"/>
-                                <path d="M64 74c16-4 48-4 64 2" stroke="white" stroke-width="6" stroke-linecap="round"/>
-                            </svg>
-                            <!-- Genérico (estrela) -->
-                            <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <polygon points="24,6 29,19 43,19 32,28 36,42 24,34 12,42 16,28 5,19 19,19" fill="white"/>
-                            </svg>
-                        </div>
-                    </section>
+                    <!-- Remover completamente a barra de patrocinadores e rodapé da home -->
                 </div>
             </section>
         </div>
@@ -527,7 +516,7 @@
         </div>
     </main>
 
-    <p style="text-align:center;color:#888;font-size:0.95rem;margin:32px 0 0 0">&copy; 2025 WebRadio. Todos os direitos reservados.</p>
+    <!-- Remover o rodapé estático do index.html para evitar espaço extra e conflito com o rodapé do React -->
     <script type="module" src="script.js"></script>
 </body>
 </html>

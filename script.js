@@ -41,11 +41,13 @@ const hamburgerIcon = document.querySelector('.hamburger-icon');
 const closeIcon = document.querySelector('.close-icon');
 
 // Mobile menu toggle
-mobileMenuToggle.addEventListener('click', () => {
-    mobileMenu.classList.toggle('active');
-    hamburgerIcon.classList.toggle('hidden');
-    closeIcon.classList.toggle('hidden');
-});
+if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+        hamburgerIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+    });
+}
 
 // Page navigation
 function showPage(pageId) {
@@ -130,8 +132,8 @@ function togglePlayPause() {
     }
 }
 
-playPauseBtn.addEventListener('click', togglePlayPause);
-playBtn.addEventListener('click', togglePlayPause);
+if (playPauseBtn) playPauseBtn.addEventListener('click', togglePlayPause);
+if (playBtn) playBtn.addEventListener('click', togglePlayPause);
 
 // Volume controls
 function toggleMute() {
@@ -150,9 +152,9 @@ function toggleMute() {
     }
 }
 
-volumeBtn.addEventListener('click', toggleMute);
+if (volumeBtn) volumeBtn.addEventListener('click', toggleMute);
 
-volumeSlider.addEventListener('input', (e) => {
+if (volumeSlider) volumeSlider.addEventListener('input', (e) => {
     const newVolume = e.target.value;
     
     if (newVolume == 0) {
@@ -169,175 +171,7 @@ volumeSlider.addEventListener('input', (e) => {
     console.log('Volume changed to:', newVolume);
 });
 
-// News Slider
-const newsData = [
-    {
-        id: 1,
-        title: "Nova programação da rádio estreia na próxima semana",
-        summary: "Confira os novos programas que chegam para diversificar ainda mais nossa grade de programação.",
-        date: "11/07/2025",
-        time: "14:30",
-        image: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=400&h=250&fit=crop",
-        category: "Programação"
-    },
-    {
-        id: 2,
-        title: "Festival de música local será transmitido ao vivo",
-        summary: "Não perca a cobertura completa do maior festival de música da região, direto dos nossos estúdios.",
-        date: "10/07/2025",
-        time: "16:45",
-        image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=250&fit=crop",
-        category: "Eventos"
-    },
-    {
-        id: 3,
-        title: "Entrevista exclusiva com artista local",
-        summary: "O cantor João Silva fala sobre seu novo álbum e projetos futuros em entrevista exclusiva.",
-        date: "09/07/2025",
-        time: "10:15",
-        image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=250&fit=crop",
-        category: "Entrevistas"
-    },
-    {
-        id: 4,
-        title: "Campanha solidária arrecada doações para comunidade",
-        summary: "Nossa campanha beneficente já arrecadou mais de 500 cestas básicas para famílias necessitadas.",
-        date: "08/07/2025",
-        time: "09:20",
-        image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&h=250&fit=crop",
-        category: "Social"
-    }
-];
-
-let currentSlide = 0;
-let isAutoPlay = true;
-let autoPlayInterval;
-
-const newsSliderTrack = document.getElementById('news-slider-track');
-const newsDots = document.getElementById('news-dots');
-const prevNewsBtn = document.getElementById('prev-news');
-const nextNewsBtn = document.getElementById('next-news');
-const autoplayToggle = document.getElementById('autoplay-toggle');
-
-// Create news slides
-function createNewsSlides() {
-    newsSliderTrack.innerHTML = '';
-    newsDots.innerHTML = '';
-    
-    newsData.forEach((news, index) => {
-        // Create slide
-        const slide = document.createElement('div');
-        slide.className = 'news-item';
-        slide.innerHTML = `
-            <div class="news-content">
-                <div class="news-image">
-                    <img src="${news.image}" alt="${news.title}" loading="lazy">
-                    <div class="news-category">${news.category}</div>
-                </div>
-                <div class="news-text">
-                    <div class="news-meta">
-                        <div class="news-meta-item">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                                <line x1="16" y1="2" x2="16" y2="6"/>
-                                <line x1="8" y1="2" x2="8" y2="6"/>
-                                <line x1="3" y1="10" x2="21" y2="10"/>
-                            </svg>
-                            <span>${news.date}</span>
-                        </div>
-                        <div class="news-meta-item">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <polyline points="12,6 12,12 16,14"/>
-                            </svg>
-                            <span>${news.time}</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">${news.title}</h3>
-                    <p class="news-summary">${news.summary}</p>
-                    <button class="news-btn">Ler mais</button>
-                </div>
-            </div>
-        `;
-        newsSliderTrack.appendChild(slide);
-        
-        // Create dot
-        const dot = document.createElement('button');
-        dot.className = `news-dot ${index === 0 ? 'active' : ''}`;
-        dot.addEventListener('click', () => goToSlide(index));
-        newsDots.appendChild(dot);
-    });
-}
-
-// Navigation functions
-function goToSlide(index) {
-    currentSlide = index;
-    updateSlider();
-    updateDots();
-}
-
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % newsData.length;
-    updateSlider();
-    updateDots();
-}
-
-function prevSlide() {
-    currentSlide = (currentSlide - 1 + newsData.length) % newsData.length;
-    updateSlider();
-    updateDots();
-}
-
-function updateSlider() {
-    const translateX = -currentSlide * 100;
-    newsSliderTrack.style.transform = `translateX(${translateX}%)`;
-}
-
-function updateDots() {
-    const dots = document.querySelectorAll('.news-dot');
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentSlide);
-    });
-}
-
-// Auto play functionality
-function startAutoPlay() {
-    if (isAutoPlay) {
-        autoPlayInterval = setInterval(nextSlide, 5000);
-    }
-}
-
-function stopAutoPlay() {
-    if (autoPlayInterval) {
-        clearInterval(autoPlayInterval);
-    }
-}
-
-function toggleAutoPlay() {
-    isAutoPlay = !isAutoPlay;
-    autoplayToggle.textContent = isAutoPlay ? 'Pausar' : 'Reproduzir';
-    
-    if (isAutoPlay) {
-        startAutoPlay();
-    } else {
-        stopAutoPlay();
-    }
-}
-
-// Event listeners
-prevNewsBtn.addEventListener('click', prevSlide);
-nextNewsBtn.addEventListener('click', nextSlide);
-autoplayToggle.addEventListener('click', toggleAutoPlay);
-
-// Pause autoplay on hover
-newsSliderTrack.addEventListener('mouseenter', stopAutoPlay);
-newsSliderTrack.addEventListener('mouseleave', () => {
-    if (isAutoPlay) startAutoPlay();
-});
-
-// Initialize news slider
-createNewsSlides();
-startAutoPlay();
+// News Slider (REMOVIDO: toda a lógica e referências a elementos de notícias da home, pois não existem mais)
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

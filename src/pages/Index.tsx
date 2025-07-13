@@ -12,7 +12,7 @@ const Index = () => {
         <Navbar />
         
         {/* Hero Section */}
-        <section id="inicio" className="pt-24 pb-16">
+        <section id="inicio" className="pt-24 pb-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
@@ -33,28 +33,6 @@ const Index = () => {
                 Seu navegador não suporta o elemento de vídeo.
               </video>
             </div>
-          </div>
-        </section>
-
-        {/* Stats Section */}
-        <section className="py-6 bg-gradient-to-r from-red-500 to-pink-500">
-          <div className="max-w-5xl mx-auto flex items-center justify-center gap-12">
-            {/* Google */}
-            <svg width="90" height="32" viewBox="0 0 90 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="0" y="24" fontFamily="Arial, Helvetica, sans-serif" fontWeight="bold" fontSize="24" fill="white">Google</text>
-            </svg>
-            {/* YouTube */}
-            <svg width="90" height="32" viewBox="0 0 90 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="0" y="24" fontFamily="Arial, Helvetica, sans-serif" fontWeight="bold" fontSize="24" fill="white">YouTube</text>
-            </svg>
-            {/* Spotify */}
-            <svg width="90" height="32" viewBox="0 0 90 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="0" y="24" fontFamily="Arial, Helvetica, sans-serif" fontWeight="bold" fontSize="24" fill="white">Spotify</text>
-            </svg>
-            {/* Genérico */}
-            <svg width="90" height="32" viewBox="0 0 90 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="0" y="24" fontFamily="Arial, Helvetica, sans-serif" fontWeight="bold" fontSize="24" fill="white">Patrocinio</text>
-            </svg>
           </div>
         </section>
       </div>
